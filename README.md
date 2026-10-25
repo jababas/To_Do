@@ -128,3 +128,19 @@ return tareas.filter(tarea => tarea.id !== id);
 - **REFACTOR:** ¿qué mejoraste sin cambiar el comportamiento?
 Nada importante que modificar
 
+## Mision 8 . Casos para la funcion obtenerResumen
+
+- **RED:** ¿qué prueba escribiste y por qué falló?
+Se escriben los casos para obtenerResumen y 
+fallan porque en el task no se indica su comportamiento
+
+- **GREEN:** ¿cuál fue el cambio mínimo que la hizo pasar?
+return {
+    total: tareas.length,
+    pendientes: obtenerPendientes(tareas).length,
+    terminadas: obtenerTerminadas(tareas).length
+  };
+
+- **REFACTOR:** ¿qué mejoraste sin cambiar el comportamiento?
+Se eligio reutilizar funciones ya probadas en lugar de repetir el criterio
+
