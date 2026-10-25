@@ -78,6 +78,13 @@ return [...tareas, nuevaTarea];
 
 No hay necesidad de mejorar algo mas
 
-## Pair Programming
+## Mision 3 . Casos para la funcion
 
-Registra por misión quién fue **Driver** y quién **Navigator**. Intercambien roles con frecuencia y no hagan commit hasta que ambos puedan explicar el código y la prueba.
+- **RED:** ¿qué prueba escribiste y por qué falló?
+Pasa la misma situacion que con la otra mision, unicamete se agregan los casos, pero no se exportan
+
+- **GREEN:** ¿cuál fue el cambio mínimo que la hizo pasar?
+
+
+- **REFACTOR:** ¿qué mejoraste sin cambiar el comportamiento?
+
