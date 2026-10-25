@@ -78,7 +78,7 @@ return [...tareas, nuevaTarea];
 
 No hay necesidad de mejorar algo mas
 
-## Mision 3 . Casos para la funcion
+## Mision 4 . Casos para la funcion buscarTarea
 
 - **RED:** ¿qué prueba escribiste y por qué falló?
 Pasa la misma situacion que con la otra mision, unicamete se agregan los casos, pero no se exportan
@@ -89,3 +89,15 @@ En lugar de que solo retorne el error
 
 - **REFACTOR:** ¿qué mejoraste sin cambiar el comportamiento?
 La función ya es de una línea, asi que probablemente no hay nada mas que hacerle
+
+
+## Mision 5 . Casos para la funcion obtenerPendientes
+
+- **RED:** ¿qué prueba escribiste y por qué falló?
+Se escriben los casos para obtenerPendietnes y ObtenerTerminadas y fallan porque en el task no se indica su comportamiento
+
+- **GREEN:** ¿cuál fue el cambio mínimo que la hizo pasar?
+
+
+- **REFACTOR:** ¿qué mejoraste sin cambiar el comportamiento?
+
