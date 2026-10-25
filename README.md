@@ -181,3 +181,9 @@ Tras cada cambio se ejecutó `npm test` (21 pruebas en verde) y se repitieron lo
 - **Pruebas diseñadas primero:** vacía, 0 %, 100 % y redondeo (1 de 3 = 33).
 - **Archivos tocados:** `taskService.js` (una función), `taskService.test.js` (pruebas) y `app.js` (una línea en `renderResumen`).
 - **Conclusión:** el cambio no obligó a modificar partes no relacionadas. La separación entre dominio e interfaz, y `renderResumen()` como función aparte
+
+## Reflexion
+
+El cambio que más aumentó la mantenibilidad fue mover las reglas de las tareas a funciones puras en taskService.js. Al separar la lógica del DOM, cada regla se pudo probar sin navegador y app.js quedó reducido a leer eventos, llamar al servicio y renderizar. La prueba de que esto funcionó fue la extensión del porcentaje de avance pues, bastó una función nueva y una línea en la interfaz, sin tocar partes no relacionadas. También ayudó pasar de strings a objetos con id y completada, porque permitió identificar cada tarea sin depender de su posición.
+La prueba que dio más confianza fue la de cambiarEstado que comprueba que el objeto original no se modifica. Protege contra la mutación accidental, un error difícil de ver a simple vista que suele aparecer como un fallo extraño en la interfaz. Las pruebas de frontera, como la colección vacía y el id inexistente, también fueron valiosas porque me obligaron a decidir qué debía devolver cada función en esos casos antes de programarla.
+Al trabajar solo, alternar los roles de Navigator y Driver evitó diseñar las pruebas a la medida del código: primero pensaba los casos y después escribía la implementación. Avanzar con RED, GREEN y REFACTOR en pasos pequeños hizo que cada cambio fuera fácil de revisar y de revertir.
