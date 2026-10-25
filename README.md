@@ -174,3 +174,10 @@ Con las 21 pruebas en verde, se revisaron `app.js` y `taskService.js`. Después 
 
 ### Evidencia de que no cambió el comportamiento
 Tras cada cambio se ejecutó `npm test` (21 pruebas en verde) y se repitieron los 4 escenarios de la tabla de integración manual.
+
+## Misión 11 · Extensión elegida: C (porcentaje de avance)
+
+- **Decisión sobre la pregunta de prueba:** con colección vacía devuelve 0 para evitar la división entre cero. El resultado se redondea al entero más cercano.
+- **Pruebas diseñadas primero:** vacía, 0 %, 100 % y redondeo (1 de 3 = 33).
+- **Archivos tocados:** `taskService.js` (una función), `taskService.test.js` (pruebas) y `app.js` (una línea en `renderResumen`).
+- **Conclusión:** el cambio no obligó a modificar partes no relacionadas. La separación entre dominio e interfaz, y `renderResumen()` como función aparte

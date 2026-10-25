@@ -7,7 +7,8 @@ import {
   obtenerTerminadas,
   cambiarEstado,
   eliminarTarea,
-  obtenerResumen
+  obtenerResumen,
+  obtenerPorcentajeAvance
 } from "../src/taskService.js";
 
 /*
@@ -16,6 +17,32 @@ import {
  * Activa/crea pruebas misión por misión. No escribas todas las soluciones de
  * una vez. Para cada comportamiento sigue RED → GREEN → REFACTOR.
  */
+
+describe("obtenerPorcentajeAvance", () => {
+  it("con colección vacía devuelve 0", () => {
+    expect(obtenerPorcentajeAvance([])).toBe(0);
+  });
+
+  it("devuelve 0 si ninguna está terminada", () => {
+    expect(obtenerPorcentajeAvance([
+      { id: 1, titulo: "A", completada: false }
+    ])).toBe(0);
+  });
+
+  it("devuelve 100 si todas están terminadas", () => {
+    expect(obtenerPorcentajeAvance([
+      { id: 1, titulo: "A", completada: true }
+    ])).toBe(100);
+  });
+
+  it("redondea el porcentaje (1 de 3 = 33)", () => {
+    expect(obtenerPorcentajeAvance([
+      { id: 1, titulo: "A", completada: true },
+      { id: 2, titulo: "B", completada: false },
+      { id: 3, titulo: "C", completada: false }
+    ])).toBe(33);
+  });
+});
 
 describe("crearTarea", () => {
   it("crea una tarea pendiente con id y título", () => {

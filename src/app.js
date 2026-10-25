@@ -7,7 +7,8 @@ import {
   obtenerTerminadas,
   cambiarEstado,
   eliminarTarea,
-  obtenerResumen
+  obtenerResumen,
+  obtenerPorcentajeAvance
 } from "./taskService.js";
 
 const form = document.querySelector("#task-form");
@@ -45,7 +46,8 @@ function crearElementoTarea(tarea) {
 
 function renderResumen() {
   const { total, pendientes, terminadas } = obtenerResumen(tareas);
-  summary.textContent = `Total: ${total} · Pendientes: ${pendientes} · Terminadas: ${terminadas}`;
+  const avance = obtenerPorcentajeAvance(tareas);
+  summary.textContent = `Total: ${total} · Pendientes: ${pendientes} · Terminadas: ${terminadas} · Avance: ${avance}%`;
 }
 
 function render() {
