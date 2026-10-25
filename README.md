@@ -70,9 +70,13 @@ no hizo falta cambiar nada porque la función ya es corta y expresa su intenció
 Integre tres casos para la funcion "agregarTare" y fallo porque aún no no esta exportada la función
 
 - **GREEN:** ¿cuál fue el cambio mínimo que la hizo pasar?
+En el arvhivo de taskService.js exporte la funcion con el interior que ahora le debe de corresponder, ya que antes hacia caso a lo que tenia inicialmente, ahora retorna lo que deberia y antes retornaba un error
+
+return [...tareas, nuevaTarea];
 
 - **REFACTOR:** ¿qué mejoraste sin cambiar el comportamiento?
 
+No hay necesidad de mejorar algo mas
 
 ## Pair Programming
 
