@@ -103,3 +103,15 @@ return tareas.filter(tarea => tarea.completada);
 - **REFACTOR:** ¿qué mejoraste sin cambiar el comportamiento?
 Las pruebas repiten los objetos pendiente y terminada en
  dos describe
+
+## Mision 6 . Casos para la funcion cambiarEstado
+
+- **RED:** ¿qué prueba escribiste y por qué falló?
+Se escriben los casos para cambiarEstado y fallan porque en el task no se indica su comportamiento
+
+- **GREEN:** ¿cuál fue el cambio mínimo que la hizo pasar?
+return tareas.map(tarea =>
+    tarea.id === id ? { ...tarea, completada: !tarea.completada } : tarea
+  );
+- **REFACTOR:** ¿qué mejoraste sin cambiar el comportamiento?
+Nada importante que modificar

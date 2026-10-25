@@ -99,6 +99,38 @@ describe("obtenerTerminadas", () => {
     expect(obtenerTerminadas([])).toEqual([]);
   });
 });
+
+describe("cambiarEstado", () => {
+  it("cambia el estado de la tarea indicada", () => {
+    const tareas = [
+      { id: 1, titulo: "A", completada: false },
+      { id: 2, titulo: "B", completada: true }
+    ];
+    const resultado = cambiarEstado(tareas, 1);
+    expect(resultado[0].completada).toBe(true);
+    expect(cambiarEstado(tareas, 2)[1].completada).toBe(false);
+  });
+
+  it("no altera las demás tareas", () => {
+    const tareas = [
+      { id: 1, titulo: "A", completada: false },
+      { id: 2, titulo: "B", completada: true }
+    ];
+    const resultado = cambiarEstado(tareas, 1);
+    expect(resultado[1]).toEqual({ id: 2, titulo: "B", completada: true });
+  });
+
+  it("con id inexistente conserva el contenido", () => {
+    const tareas = [{ id: 1, titulo: "A", completada: false }];
+    expect(cambiarEstado(tareas, 99)).toEqual(tareas);
+  });
+
+  it("no muta el objeto original", () => {
+    const original = { id: 1, titulo: "A", completada: false };
+    cambiarEstado([original], 1);
+    expect(original.completada).toBe(false);
+  });
+});
 // MISIÓN 3: agrega al menos dos pruebas para agregarTarea().
 // MISIÓN 4: prueba id existente e inexistente para buscarTarea().
 // MISIÓN 5: prueba colección mixta, sin coincidencias y vacía.
@@ -108,6 +140,6 @@ describe("obtenerTerminadas", () => {
 
 // Los imports anteriores quedan preparados para que construyas la suite de forma incremental.
 
-void cambiarEstado;
+
 void eliminarTarea;
 void obtenerResumen;
