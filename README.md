@@ -144,3 +144,14 @@ return {
 - **REFACTOR:** ¿qué mejoraste sin cambiar el comportamiento?
 Se eligio reutilizar funciones ya probadas en lugar de repetir el criterio
 
+
+## Mision 9. Integracion con la interfaz
+
+| Escenario | Acción | Resultado esperado |
+| --- | --- | --- |
+| Alta válida | Escribir título y Agregar | Aparece tarea pendiente y cambia el resumen |
+| Alta inválida | Enviar título vacío | No se agrega; mensaje claro |
+| Cambio de estado | Pulsar Completar | Cambia el estilo y los contadores |
+| Filtro | Elegir Pendientes | Solo se muestran pendientes |
+| Eliminar | Pulsar Eliminar | Desaparece y se actualiza el resumen |
+

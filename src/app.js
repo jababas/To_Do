@@ -7,6 +7,16 @@
  * El DOM debe leer eventos, delegar reglas al servicio y renderizar resultados.
  */
 
+import {
+  crearTarea,
+  agregarTarea,
+  obtenerPendientes,
+  obtenerTerminadas,
+  cambiarEstado,
+  eliminarTarea,
+  obtenerResumen
+} from "./taskService.js";
+
 const form = document.querySelector("#task-form");
 const input = document.querySelector("#task-input");
 const list = document.querySelector("#task-list");
@@ -15,23 +25,40 @@ const summary = document.querySelector("#summary");
 const filters = [...document.querySelectorAll("[data-filter]")];
 
 let tareas = [
-  { id: 1, titulo: "Revisar requisitos", completada: false },
-  { id: 2, titulo: "Diseñar pruebas", completada: false },
-  { id: 3, titulo: "Refactorizar código", completada: false }
+  crearTarea(1, "Revisar requisitos"),
+  crearTarea(2, "Diseñar pruebas"),
+  crearTarea(3, "Refactorizar código")
 ];
+let siguienteId = 4;
 let filtro = "todas";
+
+const selectoresDeFiltro = {
+  todas: (lista) => lista,
+  pendientes: obtenerPendientes,
+  terminadas: obtenerTerminadas
+};
 
 function render() {
   list.innerHTML = "";
-  tareas.forEach((tarea, index) => {
+
+  const visibles = selectoresDeFiltro[filtro](tareas);
+
+  visibles.forEach((tarea) => {
     const li = document.createElement("li");
-    li.className = "task";
-    li.innerHTML = `<span class="title">${titulo}</span>
-      <span class="task-actions"><button data-delete="${index}">Eliminar</button></span>`;
+    li.className = tarea.completada ? "task done" : "task";
+    li.innerHTML = `<span class="title">${tarea.titulo}</span>
+      <span class="task-actions">
+        <button data-toggle="${tarea.id}">${tarea.completada ? "Reabrir" : "Completar"}</button>
+        <button data-delete="${tarea.id}">Eliminar</button>
+      </span>`;
     list.appendChild(li);
   });
-  summary.textContent = `Total: ${tareas.length}`;
+
+  const { total, pendientes, terminadas } = obtenerResumen(tareas);
+  summary.textContent = `Total: ${total} · Pendientes: ${pendientes} · Terminadas: ${terminadas}`;
 }
+
+
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -40,23 +67,25 @@ form.addEventListener("submit", (event) => {
     message.textContent = "Escribe un título antes de agregar.";
     return;
   }
-  tareas.push({ id: Date.now(), titulo, completada: false });
+  tareas = agregarTarea(tareas, crearTarea(siguienteId++, titulo));
   input.value = "";
   message.textContent = "";
   render();
 });
 
 list.addEventListener("click", (event) => {
-  const index = event.target.dataset.delete;
-  if (index === undefined) return;
-  tareas.splice(Number(index), 1); // otro punto deliberado de refactor
+  const { toggle, delete: borrar } = event.target.dataset;
+  if (toggle !== undefined) tareas = cambiarEstado(tareas, Number(toggle));
+  else if (borrar !== undefined) tareas = eliminarTarea(tareas, Number(borrar));
+  else return;
   render();
 });
 
 filters.forEach(button => button.addEventListener("click", () => {
   filtro = button.dataset.filter;
   filters.forEach(b => b.classList.toggle("active", b === button));
-  message.textContent = `Filtro '${filtro}' pendiente de integrar durante el refactor.`;
+  message.textContent = "";
+  render();
 }));
 
 render();
