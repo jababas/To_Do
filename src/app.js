@@ -14,12 +14,16 @@ const message = document.querySelector("#message");
 const summary = document.querySelector("#summary");
 const filters = [...document.querySelectorAll("[data-filter]")];
 
-let tareas = ["Revisar requisitos", "Diseñar pruebas", "Refactorizar código"];
+let tareas = [
+  { id: 1, titulo: "Revisar requisitos", completada: false },
+  { id: 2, titulo: "Diseñar pruebas", completada: false },
+  { id: 3, titulo: "Refactorizar código", completada: false }
+];
 let filtro = "todas";
 
 function render() {
   list.innerHTML = "";
-  tareas.forEach((titulo, index) => {
+  tareas.forEach((tarea, index) => {
     const li = document.createElement("li");
     li.className = "task";
     li.innerHTML = `<span class="title">${titulo}</span>
@@ -36,7 +40,7 @@ form.addEventListener("submit", (event) => {
     message.textContent = "Escribe un título antes de agregar.";
     return;
   }
-  tareas.push(titulo); // código deliberadamente acoplado/mutable para refactorizar
+  tareas.push({ id: Date.now(), titulo, completada: false });
   input.value = "";
   message.textContent = "";
   render();

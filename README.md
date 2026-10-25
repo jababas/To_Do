@@ -46,6 +46,9 @@ Los datos los representa el arreglo "tareas" y la interfaz el "mostrarTareas()" 
 2. un titulo vacio se rechaza
 3. eliminar una tarea quita solo la tarea deseada
 
+## Misión 1 . Tareas con formato de objeto
+Aquí trate de modificar la forma que tenian las tareas, que eran unicamente un arreglo de string, lo que ahora cambia a un objeto con forma, (id, titulo, completada)
+
 ## Registro RED → GREEN → REFACTOR
 
 Documenta al menos una iteración:
