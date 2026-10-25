@@ -97,7 +97,9 @@ La función ya es de una línea, asi que probablemente no hay nada mas que hacer
 Se escriben los casos para obtenerPendietnes y ObtenerTerminadas y fallan porque en el task no se indica su comportamiento
 
 - **GREEN:** ¿cuál fue el cambio mínimo que la hizo pasar?
-
+return tareas.filter(tarea => !tarea.completada); y 
+return tareas.filter(tarea => tarea.completada);
 
 - **REFACTOR:** ¿qué mejoraste sin cambiar el comportamiento?
-
+Las pruebas repiten los objetos pendiente y terminada en
+ dos describe

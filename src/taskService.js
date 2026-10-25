@@ -24,15 +24,12 @@ export function buscarTarea(tareas, id) {
 
 // MISIÓN 5
 export function obtenerPendientes(tareas) {
-  // TODO: usar filter().
-  throw new Error("Misión 5 pendiente: implementar obtenerPendientes()");
+  return tareas.filter(tarea => !tarea.completada);
 }
 
 export function obtenerTerminadas(tareas) {
-  // TODO: usar filter().
-  throw new Error("Misión 5 pendiente: implementar obtenerTerminadas()");
+  return tareas.filter(tarea => tarea.completada);
 }
-
 // MISIÓN 6
 export function cambiarEstado(tareas, id) {
   // TODO: usar map() + spread. No mutar el objeto original.
