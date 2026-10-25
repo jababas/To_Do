@@ -149,9 +149,9 @@ Se eligio reutilizar funciones ya probadas en lugar de repetir el criterio
 
 | Escenario | Acción | Resultado esperado |
 | --- | --- | --- |
-| Alta válida | Escribir título y Agregar | Aparece tarea pendiente y cambia el resumen |
-| Alta inválida | Enviar título vacío | No se agrega; mensaje claro |
-| Cambio de estado | Pulsar Completar | Cambia el estilo y los contadores |
-| Filtro | Elegir Pendientes | Solo se muestran pendientes |
-| Eliminar | Pulsar Eliminar | Desaparece y se actualiza el resumen |
+| Alta válida | Escribir título y Agregar | Aparece tarea pendiente y cambia el resumen (FUNCIONAL) |
+| Alta inválida | Enviar título vacío | No se agrega; mensaje claro (FUNCIONAL)|
+| Cambio de estado | Pulsar Completar | Cambia el estilo y los contadores (FUNCIONAL)|
+| Filtro | Elegir Pendientes | Solo se muestran pendientes (FUNCIONAL)|
+| Eliminar | Pulsar Eliminar | Desaparece y se actualiza el resumen (FUNCIONAL) |
 
