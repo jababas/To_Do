@@ -53,7 +53,7 @@ Aquí trate de modificar la forma que tenian las tareas, que eran unicamente un 
 
 Documenta al menos una iteración:
 
-## Mision 3 . test
+## Mision 2 . test
 
 - **RED:** ¿qué prueba escribiste y por qué falló?
 escribí la prueba “crea una tarea pendiente con id y título” y falló porque crearTarea lanzaba un error y no devolvía el objeto esperado.
@@ -63,6 +63,16 @@ el cambio mínimo fue return { id, titulo, completada: false };
 
 - **REFACTOR:** ¿qué mejoraste sin cambiar el comportamiento?
 no hizo falta cambiar nada porque la función ya es corta y expresa su intención. Volví a ejecutar las pruebas y siguen en verde.
+
+## Mision 3 . Casos para la funcion
+
+- **RED:** ¿qué prueba escribiste y por qué falló?
+Integre tres casos para la funcion "agregarTare" y fallo porque aún no no esta exportada la función
+
+- **GREEN:** ¿cuál fue el cambio mínimo que la hizo pasar?
+
+- **REFACTOR:** ¿qué mejoraste sin cambiar el comportamiento?
+
 
 ## Pair Programming
 
