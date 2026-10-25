@@ -155,3 +155,22 @@ Se eligio reutilizar funciones ya probadas en lugar de repetir el criterio
 | Filtro | Elegir Pendientes | Solo se muestran pendientes (FUNCIONAL)|
 | Eliminar | Pulsar Eliminar | Desaparece y se actualiza el resumen (FUNCIONAL) |
 
+## Mision 10. Refacor
+
+## Misión 10 · Refactor final
+
+Con las 21 pruebas en verde, se revisaron `app.js` y `taskService.js`. Después de cada cambio se ejecutó `npm test` y se comprobó la app en el navegador.
+
+| # | Qué cambié | Por qué | `npm test` |
+|---|---|---|---|
+| 1 | Extraje `crearElementoTarea()` de `render()` | `render()` tenía varias responsabilidades (filtrar, construir cada elemento y calcular el resumen). Ahora cada función hace una sola cosa. | 21 pasan |
+| 2 | El título se asigna con `textContent` en lugar de `innerHTML` | Con `innerHTML` un título como `<b>hola</b>` se interpretaba como HTML. Es un riesgo de seguridad al mostrar texto del usuario. | 21 pasan |
+| 3 | Extraje `renderResumen()` | Separa el cálculo y la presentación del resumen; `render()` queda como una secuencia legible de pasos. | 21 pasan |
+| 4 | Creé `mostrarMensaje()` | `message.textContent = ...` estaba repetido en tres lugares. Ahora hay un solo punto de cambio. | 21 pasan |
+
+### Lo que decidí no cambiar
+- `taskService.js`: las funciones son cortas, puras y cada una tiene una sola responsabilidad. No encontré duplicación que justificara tocarlas.
+- Las tareas iniciales dentro de `app.js`: por ahora son datos de ejemplo de la interfaz y moverlas no mejora la legibilidad.
+
+### Evidencia de que no cambió el comportamiento
+Tras cada cambio se ejecutó `npm test` (21 pruebas en verde) y se repitieron los 4 escenarios de la tabla de integración manual.

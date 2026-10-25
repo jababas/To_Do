@@ -1,11 +1,4 @@
-/*
- * MISIÓN 9 · ADAPTADOR DE INTERFAZ
- *
- * Este archivo contiene una versión inicial de interfaz basada en strings para
- * que la aplicación pueda observarse desde el comienzo. Cuando llegues a la
- * Misión 9, reemplaza la lógica de datos por llamadas a taskService.js.
- * El DOM debe leer eventos, delegar reglas al servicio y renderizar resultados.
- */
+
 
 import {
   crearTarea,
@@ -38,38 +31,44 @@ const selectoresDeFiltro = {
   terminadas: obtenerTerminadas
 };
 
-function render() {
-  list.innerHTML = "";
+function crearElementoTarea(tarea) {
+  const li = document.createElement("li");
+  li.className = tarea.completada ? "task done" : "task";
+  li.innerHTML = `<span class="title"></span>
+    <span class="task-actions">
+      <button data-toggle="${tarea.id}">${tarea.completada ? "Reabrir" : "Completar"}</button>
+      <button data-delete="${tarea.id}">Eliminar</button>
+    </span>`;
+  li.querySelector(".title").textContent = tarea.titulo;
+  return li;
+}
 
-  const visibles = selectoresDeFiltro[filtro](tareas);
-
-  visibles.forEach((tarea) => {
-    const li = document.createElement("li");
-    li.className = tarea.completada ? "task done" : "task";
-    li.innerHTML = `<span class="title">${tarea.titulo}</span>
-      <span class="task-actions">
-        <button data-toggle="${tarea.id}">${tarea.completada ? "Reabrir" : "Completar"}</button>
-        <button data-delete="${tarea.id}">Eliminar</button>
-      </span>`;
-    list.appendChild(li);
-  });
-
+function renderResumen() {
   const { total, pendientes, terminadas } = obtenerResumen(tareas);
   summary.textContent = `Total: ${total} · Pendientes: ${pendientes} · Terminadas: ${terminadas}`;
 }
 
+function render() {
+  list.innerHTML = "";
+  const visibles = selectoresDeFiltro[filtro](tareas);
+  visibles.forEach((tarea) => list.appendChild(crearElementoTarea(tarea)));
+  renderResumen();
+}
 
+function mostrarMensaje(texto = "") {
+  message.textContent = texto;
+}
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const titulo = input.value.trim();
   if (!titulo) {
-    message.textContent = "Escribe un título antes de agregar.";
+    mostrarMensaje("Escribe un título antes de agregar.");
     return;
   }
   tareas = agregarTarea(tareas, crearTarea(siguienteId++, titulo));
   input.value = "";
-  message.textContent = "";
+  mostrarMensaje();
   render();
 });
 
@@ -84,7 +83,7 @@ list.addEventListener("click", (event) => {
 filters.forEach(button => button.addEventListener("click", () => {
   filtro = button.dataset.filter;
   filters.forEach(b => b.classList.toggle("active", b === button));
-  message.textContent = "";
+  mostrarMensaje();
   render();
 }));
 
