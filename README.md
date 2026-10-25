@@ -115,3 +115,16 @@ return tareas.map(tarea =>
   );
 - **REFACTOR:** ¿qué mejoraste sin cambiar el comportamiento?
 Nada importante que modificar
+
+## Mision 7 . Casos para la funcion eliminarTarea
+
+- **RED:** ¿qué prueba escribiste y por qué falló?
+Se escriben los casos para eliminarTarea y 
+fallan porque en el task no se indica su comportamiento
+
+- **GREEN:** ¿cuál fue el cambio mínimo que la hizo pasar?
+return tareas.filter(tarea => tarea.id !== id);
+
+- **REFACTOR:** ¿qué mejoraste sin cambiar el comportamiento?
+Nada importante que modificar
+
