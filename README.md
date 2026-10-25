@@ -84,7 +84,8 @@ No hay necesidad de mejorar algo mas
 Pasa la misma situacion que con la otra mision, unicamete se agregan los casos, pero no se exportan
 
 - **GREEN:** ¿cuál fue el cambio mínimo que la hizo pasar?
-
+En lugar de que solo retorne el error
+ return tareas.find(tarea => tarea.id === id);
 
 - **REFACTOR:** ¿qué mejoraste sin cambiar el comportamiento?
-
+La función ya es de una línea, asi que probablemente no hay nada mas que hacerle
