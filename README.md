@@ -29,15 +29,22 @@ La primera prueba está preparada para fallar: es el punto de partida de la **Mi
 Responde aquí:
 
 1. ¿Dónde almacenarías ahora el estado `completada` de una tarea?
+en la propia tarea como propiedad de un objeto. 
+Con strings no hay dónde ponerla sin un arreglo paralelo de caracteristica de booleanos que habría que mantener sincronizado
+
 2. ¿Qué ocurriría si mañana cada tarea necesita prioridad, fecha o responsable?
+Con objeto solo se agrega una propiedad, usando strings se necesita agregar mas arreglos
+
 3. ¿Qué parte del código representa datos y qué parte representa interfaz?
+Los datos los representa el arreglo "tareas" y la interfaz el "mostrarTareas()" que usa "queryseñector".
+
 4. ¿Qué comportamiento debemos conservar durante el refactor?
 
 ### Tres comportamientos observables que NO deben cambiar
 
-1. 
-2. 
-3. 
+1. Un titulo que aparece en la lista
+2. un titulo vacio se rechaza
+3. eliminar una tarea quita solo la tarea deseada
 
 ## Registro RED → GREEN → REFACTOR
 
